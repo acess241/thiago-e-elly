@@ -1,18 +1,9 @@
-# Uma cartinha para você
+# Cartinha de Thiago para Elly
 
-HTML, CSS e JavaScript puro. Abra index.html ou execute `npm run dev` para prévia local. `npm run build` copia os arquivos do site para dist/.
+HTML, CSS e JavaScript puro. Abra index.html ou execute npm run dev. npm run build prepara dist/.
 
-## Personalizar
+Textos, fotos e música são configuráveis em assets/content.js. O áudio atual é assets/seja-como-for.m4a, extraído do vídeo fornecido pelo usuário (AAC original, sem faixa de vídeo). O site não usa YouTube para reproduzir.
 
-- Textos, legendas e música: assets/content.js.
-- Fotos: assets/photo-01.jpeg a photo-13.jpeg. Troque os arquivos ou altere os caminhos em content.js.
-- Música: a melodia instrumental inicial foi sintetizada para esta cartinha. Para escolher outra, coloque seu arquivo MP3 em assets/ e altere music.src e music.title.
-- Capa e dedicatória: index.html. Estilos e composições de celular: style.css.
-- A fonte manuscrita usa Google Fonts, com fontes locais de reserva.
+O service worker guarda a cartinha e a música após o primeiro carregamento online em HTTPS/localhost. Espere a mensagem de confirmação no player. O funcionamento offline depende de o navegador manter os dados deste site; outro aparelho precisa carregar uma primeira vez. Arquivos locais também podem ser abertos sem internet. Fontes externas têm alternativas locais.
 
-A sequência é capa → fotos e envelope → música → bilhetes e álbum → carta final. A reprodução começa somente por toque. Fotos abrem em diálogo com navegação por setas, Escape e retorno de foco. O site respeita redução de movimento.
-
-
-A trilha atual é Seja Como For, em português, no vídeo oficial do canal Steven Universo Brasil. A reprodução usa YouTube e precisa de internet. Para usar um MP3 local, remova youtubeId da configuração e preencha src.
-
-Personalização: Thiago e Elly; contador desde 16/03/2026 17:30 no fuso da Bahia. PIN 160326 (trava visual, sem criptografia). O MP3 fornecido estava vazio: permanece a versão YouTube até receber um arquivo válido.
+Contador: 16/03/2026 às 17h30, Bahia (UTC-3), com anos/meses de calendário. PIN: 160326, dica nosso dia. O PIN é uma trava visual, não criptografia dos arquivos.

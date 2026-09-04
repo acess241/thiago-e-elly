@@ -1,6 +1,6 @@
 const fs=require('fs');
 fs.mkdirSync('dist',{recursive:true});
-for(const file of ['index.html','style.css','script.js','relationship.js','personal.js'])fs.copyFileSync(file,`dist/${file}`);
+for(const file of ['index.html','style.css','script.js','relationship.js','personal.js','sw.js'])fs.copyFileSync(file,`dist/${file}`);
 fs.cpSync('assets','dist/assets',{recursive:true});
 console.log('Site estático pronto em dist/.');
 

@@ -1,6 +1,6 @@
 // Personalização da cartinha de Thiago para Elly.
 window.LETTER_CONTENT = {
- music: { title: 'Seja Como For', subtitle: 'Steven Universo · em português', youtubeId: 'YIUXy-faPmo', src: '' },
+ music: { title: 'Seja Como For', subtitle: 'Steven Universo · em português', src: 'assets/seja-como-for.m4a' },
  photos: [
  ['photo-01.jpeg','eu e minha vidonaaaaa'],['photo-02.jpeg','meu amorrr, fica aqui pertinho'],['photo-03.jpeg','nós sendo nós kkkkk'],['photo-04.jpeg','esse sorriso acaba comigo'],['photo-05.jpeg','eu quero nós pra vida'],['photo-06.jpeg','minha Elly ♡'],['photo-07.jpeg','meu lugar é no seu abraço'],['photo-08.jpeg','um tantão de amor pra você'],['photo-09.jpeg','só mais um pouquinho assim'],['photo-10.jpeg','eu amo nossas bobeiras'],['photo-11.jpeg','escolheria você tudinho de novo'],['photo-12.jpeg','Thiago & Elly'],['photo-13.jpeg','meu amorrr, meu mundo']
  ],
@@ -20,3 +20,4 @@ window.LETTER_CONTENT = {
  'Então guarda essa cartinha, minha vidonaaaaa. Quando abrir de novo, o contador vai ter andado mais um pouquinho, mas o recado vai continuar aqui: eu te amo, Elly. Quero viver nosso amor, quero construir nosso lar e quero ter você comigo em todas essas páginas que ainda faltam. Seja como for, meu amorrr, eu quero nós. ♡'
  ]
 };
+
