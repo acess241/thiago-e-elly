@@ -1,5 +1,6 @@
 const fs=require('fs');
-fs.mkdirSync('public',{recursive:true});
-for(const file of ['index.html','style.css','script.js'])fs.copyFileSync(file,`public/${file}`);
-fs.cpSync('assets','public/assets',{recursive:true});
-console.log('Site estático pronto em public/.');
+fs.mkdirSync('dist',{recursive:true});
+for(const file of ['index.html','style.css','script.js'])fs.copyFileSync(file,`dist/${file}`);
+fs.cpSync('assets','dist/assets',{recursive:true});
+console.log('Site estático pronto em dist/.');
+
