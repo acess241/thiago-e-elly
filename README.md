@@ -14,3 +14,5 @@ A sequência é capa → fotos e envelope → música → bilhetes e álbum → 
 
 
 A trilha atual é Seja Como For, em português, no vídeo oficial do canal Steven Universo Brasil. A reprodução usa YouTube e precisa de internet. Para usar um MP3 local, remova youtubeId da configuração e preencha src.
+
+Personalização: Thiago e Elly; contador desde 16/03/2026 17:30 no fuso da Bahia. PIN 160326 (trava visual, sem criptografia). O MP3 fornecido estava vazio: permanece a versão YouTube até receber um arquivo válido.
