@@ -1,6 +1,6 @@
 // PERSONALIZE AQUI. Caminhos relativos à pasta do site. Use um MP3 próprio no music.src.
 window.LETTER_CONTENT = {
- music: { title: 'Maré mansa', subtitle: 'melodia instrumental', src: 'assets/melodia.wav' },
+ music: { title: 'Seja Como For', subtitle: 'Steven Universo · em português', youtubeId: 'YIUXy-faPmo', src: '' },
  photos: [
  ['photo-01.jpeg','meu lugar é com você'],['photo-02.jpeg','um beijo e o mundo fica bonito'],['photo-03.jpeg','o nosso jeitinho'],['photo-04.jpeg','seu sorriso, meu favorito'],['photo-05.jpeg','nós, em todos os detalhes'],['photo-06.jpeg','a vida fica linda assim'],['photo-07.jpeg','a paz de ter você pertinho'],['photo-08.jpeg','flores também dizem eu te amo'],['photo-09.jpeg','só mais um pouquinho de abraço'],['photo-10.jpeg','até nossas bobeiras são especiais'],['photo-11.jpeg','eu escolheria você outra vez'],['photo-12.jpeg','de mãos dadas com a vida'],['photo-13.jpeg','guardado bem aqui, no coração']
  ],

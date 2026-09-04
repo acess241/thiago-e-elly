@@ -12,3 +12,5 @@ HTML, CSS e JavaScript puro. Abra index.html ou execute `npm run dev` para prév
 
 A sequência é capa → fotos e envelope → música → bilhetes e álbum → carta final. A reprodução começa somente por toque. Fotos abrem em diálogo com navegação por setas, Escape e retorno de foco. O site respeita redução de movimento.
 
+
+A trilha atual é Seja Como For, em português, no vídeo oficial do canal Steven Universo Brasil. A reprodução usa YouTube e precisa de internet. Para usar um MP3 local, remova youtubeId da configuração e preencha src.

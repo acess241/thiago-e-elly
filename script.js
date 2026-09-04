@@ -23,8 +23,23 @@ content.notes.forEach(([title,message],i)=>{const b=document.createElement('butt
 content.letter.forEach(text=>{const p=document.createElement('p');p.textContent=text;$('letter-text').append(p);});
 $('final-open').onclick=()=>{$('final-open').setAttribute('aria-expanded','true');$('final-open').hidden=true;reveal('final-text');};
 $('final-close').onclick=()=>{$('final-text').hidden=true;$('final-open').hidden=false;$('final-open').setAttribute('aria-expanded','false');$('final-open').focus();};
-const audio=$('audio');audio.src=content.music.src;audio.volume=.55;$('song-title').textContent=content.music.title;
+const audio=$('audio');if(content.music.src)audio.src=content.music.src;audio.volume=.55;$('song-title').textContent=content.music.title;
 function reflectAudio(){const playing=!audio.paused;$('record').classList.toggle('playing',playing);$('record').setAttribute('aria-pressed',String(playing));$('record').setAttribute('aria-label',playing?'Pausar música':'Reproduzir música');$('play').textContent=playing?'Ⅱ pausar um pouquinho':'▷ dar o play';}
 async function toggleAudio(){if(audio.paused){try{await audio.play();$('audio-status').textContent='';}catch{$('audio-status').textContent='Não consegui tocar agora. Toque para tentar novamente.';}}else audio.pause();}
 $('record').onclick=toggleAudio;$('play').onclick=toggleAudio;audio.addEventListener('play',reflectAudio);audio.addEventListener('pause',reflectAudio);audio.addEventListener('ended',reflectAudio);audio.addEventListener('error',()=>{$('audio-status').textContent='A música não carregou. Tente abrir a cartinha novamente.';});
 audio.addEventListener('timeupdate',()=>{$('seek').value=Number.isFinite(audio.duration)?audio.currentTime/audio.duration*100:0;$('time').textContent=`${Math.floor(audio.currentTime/60)}:${String(Math.floor(audio.currentTime%60)).padStart(2,'0')}`;});$('seek').oninput=()=>{if(Number.isFinite(audio.duration))audio.currentTime=$('seek').value/100*audio.duration;};
+// A reprodução do vídeo oficial permanece visível, dentro de um recorte de papel.
+if(content.music.youtubeId){
+ let yt=null,loading=false,ready=false,timer=null,timeout=null;
+ const wrapper=document.createElement('div');wrapper.className='video-paper';wrapper.hidden=true;
+ const mount=document.createElement('div');mount.id='youtube-player';wrapper.append(mount);
+ const caption=document.createElement('p');caption.className='hand';caption.textContent=content.music.subtitle;wrapper.append(caption);
+ const external=document.createElement('a');external.href=`https://www.youtube.com/watch?v=${encodeURIComponent(content.music.youtubeId)}`;external.target='_blank';external.rel='noopener noreferrer';external.textContent='ouvir no YouTube ↗';external.className='text-button';wrapper.append(external);
+ document.querySelector('.music-object').after(wrapper);
+ function state(playing){$('record').classList.toggle('playing',playing);$('record').setAttribute('aria-pressed',String(playing));$('record').setAttribute('aria-label',playing?'Pausar música':'Reproduzir música');$('play').textContent=playing?'Ⅱ pausar um pouquinho':'▷ dar o play';}
+ function failed(){clearTimeout(timeout);loading=false;state(false);$('audio-status').textContent='Não foi possível tocar aqui. Use “ouvir no YouTube” logo abaixo.';}
+ function createPlayer(){yt=new YT.Player('youtube-player',{width:'100%',height:230,videoId:content.music.youtubeId,playerVars:{playsinline:1,origin:location.origin},events:{onReady:e=>{clearTimeout(timeout);ready=true;loading=false;$('audio-status').textContent='Se não começar, toque no play do vídeo.';e.target.playVideo();},onStateChange:e=>{state(e.data===1);clearInterval(timer);if(e.data===1){$('audio-status').textContent='';timer=setInterval(()=>{const t=yt.getCurrentTime(),d=yt.getDuration();$('seek').value=d?t/d*100:0;$('time').textContent=`${Math.floor(t/60)}:${String(Math.floor(t%60)).padStart(2,'0')}`;},500);}},onError:failed,onAutoplayBlocked:()=>{$('audio-status').textContent='Toque no play do vídeo para começar ♡';}}});}
+ function toggleYT(){wrapper.hidden=false;if(ready){yt.getPlayerState()===1?yt.pauseVideo():yt.playVideo();return;}if(loading)return;loading=true;$('audio-status').textContent='preparando a nossa música...';timeout=setTimeout(failed,15000);if(window.YT?.Player){createPlayer();return;}window.onYouTubeIframeAPIReady=createPlayer;const script=document.createElement('script');script.src='https://www.youtube.com/iframe_api';script.onerror=failed;document.head.append(script);}
+ $('record').onclick=toggleYT;$('play').onclick=toggleYT;$('seek').oninput=()=>{if(ready)yt.seekTo($('seek').value/100*yt.getDuration(),true);};
+ $('back-cover').addEventListener('click',()=>{if(ready)yt.pauseVideo();});
+}
